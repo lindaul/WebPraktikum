@@ -45,6 +45,7 @@
     <!-- product cards -->
     <div class="container" id="product-cards">
       <h1 class="text-center">PRODUCTS</h1>
+      
       <div class="row" style="margin-top: 30px;">
         <div class="col-md-3 py-3 py-md-0">
           <div class="card">
@@ -63,6 +64,8 @@
             </div>
           </div>
         </div>
+        
+        
         <div class="col-md-3 py-3 py-md-0">
           <div class="card">
             <img src="../img/a1.png" alt="">

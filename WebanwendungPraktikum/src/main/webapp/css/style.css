@@ -671,7 +671,7 @@ html{
     margin-top: 15px;
     width: 300px;
     border: none;
-    border-bottom: 2px solid #ffc800;
+    border: 2px solid #ffc800;
 }
 .input2 input ::placeholder{
     font-weight: bold;
@@ -777,11 +777,11 @@ html{
 
 /* Cart */
 
-/* Stil für den Warenkorbsidebar */
+/* Stil fï¿½r den Warenkorbsidebar */
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -30%; /* Startet außerhalb des Bildschirms */
+    right: -30%; /* Startet auï¿½erhalb des Bildschirms */
     width: 30%;
     height: 100%;
     background-color: #fff;
@@ -815,7 +815,7 @@ html{
 }
 
 
-/* Stil für das Warenkorbsymbol */
+/* Stil fï¿½r das Warenkorbsymbol */
 #cart-icon {
     cursor: pointer;
     z-index: 1000;
@@ -830,14 +830,21 @@ html{
 
 }
 
-/* Stil für Warenkorbinhalte */
+/* Stil fï¿½r Warenkorbinhalte */
 #cart-items {
     list-style: none;
     padding: 0;
 }
 
-/* Wenn der Warenkorb geöffnet ist, ziehe ihn herein */
+/* Wenn der Warenkorb geï¿½ffnet ist, ziehe ihn herein */
 .cart-sidebar.open {
     right: 0;
 }
 /* end cart */
+
+ .custom-width {
+    width: 1200%; /* Adjust the width as needed */
+  }
+
+
+
