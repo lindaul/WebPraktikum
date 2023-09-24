@@ -42,14 +42,8 @@ public class LoginBean {
 		this.password = "";
 		
 	}
-
-	/*
-	 * public String getLoginCheckRedirectHtml(){ String html = ""; if
-	 * (!this.isLoggedIn()){ html =
-	 * "<meta http-equiv='refresh' content='0; URL=./PortalAppl.jsp'>"; } return
-	 * html; }
-	 */
 	
+	//Check User Password
 	public boolean checkUseridPassword() throws SQLException{
 		//true: userid/pw Kombination existiert in der Datenbank
 		//false: userid/pw Kombination existiert nicht in der Datenbank
@@ -64,6 +58,8 @@ public class LoginBean {
 		return dbRes.next();
 	}
 	
+	
+	//return the id of the User connected
 	public int  useridEingeloggt() throws SQLException{
 		//true: userid/pw Kombination existiert in der Datenbank
 		//false: userid/pw Kombination existiert nicht in der Datenbank
@@ -87,6 +83,8 @@ public class LoginBean {
 		return user;
 	}
 	
+	
+	// return the name of the user eingellogt
 	public String  usernameEingeloggt() throws SQLException{
 		//true: userid/pw Kombination existiert in der Datenbank
 		//false: userid/pw Kombination existiert nicht in der Datenbank
@@ -114,6 +112,7 @@ public class LoginBean {
 	}
 	
 	
+	// end a session of a user and log out a user
 	public void logout(HttpSession session) {
 		
 		if(session!=null) {
@@ -122,6 +121,8 @@ public class LoginBean {
 		
 	}
 	
+	
+	/* return the links depending on who is connected*/
 	public String getLoggedHeaderImage() {
 		String html ="";
 		
@@ -141,7 +142,7 @@ public class LoginBean {
 		
 	}
 	
-	
+	/* Show navbar depending on who is connected sigup user or admin or visitors*/
 	public String getNavbar() throws NoConnectionException, SQLException {
 		
 		String html ="";
@@ -235,6 +236,7 @@ public class LoginBean {
 		
 	}
 	
+	/*returns Welcome Message depending on who is connected*/
 	public String getWelcomeMessage() throws SQLException {
 		String html ="";
 		

@@ -158,44 +158,9 @@ public class Warenkorb_Produkt {
 	}
 
 
-	public void addProdukttoWarenkorb(WarenkorbBean warenkorb, ArrayList<Produkt> produkts) throws SQLException {
 
-		String sql = "INSERT INTO warenkorb_produkt (warenkorbid, produktid, menge) VALUES (?, ?,1)";
 
-		System.out.println(sql);
-		PreparedStatement prep = this.dbConn.prepareStatement(sql);
-		int warenkorbId = warenkorb.getWarenkorbId(); // Oobtain id of warenkorb of a user
-		for (Produkt prod : produkts) {
-			int produitId = prod.getProduktId(); // id of produkt to be added
 
-			prep.setInt(1, warenkorbId);
-			prep.setInt(2, produitId);
-			prep.setInt(3, 1);
-
-			prep.executeUpdate();
-
-			// Autres méthodes pour gérer les produits du panier
-		}
-	}
-
-	public void updateProdukttoWarenkorb(WarenkorbBean warenkorb, ArrayList<Produkt> produkts) throws SQLException {
-
-		String sql = "update produit_panier (panier_id, produit_id) VALUES (?, ?)";
-
-		System.out.println(sql);
-		PreparedStatement prep = this.dbConn.prepareStatement(sql);
-		int warenkorbId = warenkorb.getWarenkorbId(); // Obtenez l'ID du panier de l'utilisateur
-		for (Produkt prod : produkts) {
-			int produitId = prod.getProduktId(); // Obtenez l'ID du produit à ajouter
-
-			prep.setInt(1, warenkorbId);
-			prep.setInt(2, produitId);
-
-			prep.executeUpdate();
-
-			// Autres méthodes pour gérer les produits du panier
-		}
-	}
 
 	public void insertProdukttoWarenkorb(int userid, int produktid) throws SQLException {
 
@@ -324,18 +289,7 @@ public class Warenkorb_Produkt {
 			);
 
 		}
-		
-		
 
-		
-		//System.out.println(produktList.size());
-		
-		
-		
-		
-		
-			
-		
 
 		System.out.println(count);
 
@@ -390,7 +344,7 @@ public String getShoppingCart() {
 		html="";
 for (Warenkorb_Produkt produkt : produktFromWarenkorb) {
 			
-			System.out.println("J'entre dans la boucle produit");
+	
 			
 			
 
@@ -398,7 +352,8 @@ for (Warenkorb_Produkt produkt : produktFromWarenkorb) {
 			html+="<div class=\"row mb-4 d-flex justify-content-between align-items-center\">\n"
 					+ "                    <div class=\"col-md-2 col-lg-2 col-xl-2\">\n"
 					+ "                      <img\n"
-					+ "                        src=\"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp\"\n"
+					+ "                        src=\"../img/"
+					+ ""+ produkt.getProduktName()+".png\"\n"
 					+ "                        class=\"img-fluid rounded-3\" alt=\"Cotton T-shirt\">\n"
 					+ "                    </div>\n"
 					+ "                    <div class=\"col-md-3 col-lg-3 col-xl-3\">\n"

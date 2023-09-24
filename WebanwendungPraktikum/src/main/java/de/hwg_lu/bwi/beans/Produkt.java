@@ -18,11 +18,19 @@ public class Produkt {
 	private String beschreibungProdukt;
 	private double preis;
 	private int bestand;
+	public String getProduktNummer() {
+		return produktNummer;
+	}
+
+	public void setProduktNummer(String produktNummer) {
+		this.produktNummer = produktNummer;
+	}
+
 	private double rabatt;
 	private String kategorie;
 	private String marke;
 
-	private ArrayList<Produkt> produktlist;
+	public ArrayList<Produkt> produktlist;
 	private ArrayList<Produkt> produktCategorieList;
 	private ArrayList<String> categoryList;
 	private ArrayList<Produkt> produktSelectedList;
@@ -33,6 +41,7 @@ public class Produkt {
 		this.produktSelectedList = new ArrayList<Produkt>();
 		this.produktCategorieList = new ArrayList<Produkt>();
 		this.categoryList = new ArrayList<>();
+		this.dbConn = new PostgreSQLAccess().getConnection();
 		this.getAllProduktDB();
 		
 
@@ -70,12 +79,13 @@ public class Produkt {
 		this.preis = preis;
 		this.kategorie = kategorie;
 	}
-
-	public void insertProduktDB(String produktNummer, String produktName, String beschreibungProdukt, double preis,
-			int bestand, double rabatt, String kategorie, String marke) throws SQLException {
+    
+	
+	/* insert Produkt in DB*/
+	public void insertProduktDB() throws SQLException {
 
 		String sql = "insert into produkt (produktNummer," + "produktName," + "beschreibungProdukt," + "preis,"
-				+ "bestand," + "rabatt," + "kategorie," + "marke" + ") values (?,?,?,?,?,?,?,?,?)";
+				+ "bestand," + "rabatt," + "angestellt_am, kategorie," + "marke" + ") values (?,?,?,?,?,0.0,current_date,?,?)";
 		System.out.println(sql);
 		PreparedStatement prep = this.dbConn.prepareStatement(sql);
 		prep.setString(1, this.produktNummer);
@@ -83,15 +93,14 @@ public class Produkt {
 		prep.setString(3, this.beschreibungProdukt);
 		prep.setDouble(4, this.preis);
 		prep.setInt   (5, this.bestand);
-		prep.setDouble(6, this.rabatt);
-		prep.setString(7, this.kategorie);
-		prep.setString(8, this.marke);
+		prep.setString(6, this.kategorie);
+		prep.setString(7, this.marke);
 
 		prep.executeUpdate();
 		System.out.println("Produkt " + this.produktNummer + " " + this.produktName + " erfolgreich angelegt");
 
 	}
-
+	/* update Produkt in DB*/
 	public void updateProduktDB(int produktId, String produktNummer, String produktName, String beschreibungProdukt,
 			double preis, int bestand, double rabatt, String kategorie, String marke) throws SQLException {
 
@@ -195,6 +204,7 @@ public class Produkt {
 
 	}
 
+	/*to change  insert Produkt in DB*/
 	public String getProduktWarenkorb() {
 
 		String html = "";
@@ -236,6 +246,7 @@ public class Produkt {
 				+ produktlist + "]";
 	}
 
+	/* show Product Card */
 	public String getProductCard() throws SQLException {
 		String html = " ";
 		
@@ -282,7 +293,8 @@ public class Produkt {
 		return html;
 
 	}
-
+	
+	/* to get all the categories in databank */
 	public String getCategory() throws NoConnectionException, SQLException {
 
 		String html = "";

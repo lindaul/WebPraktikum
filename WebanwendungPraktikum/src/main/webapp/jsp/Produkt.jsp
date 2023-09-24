@@ -9,42 +9,83 @@
     
 </head>
 <body>
-<form action="">
+
 
 <%@ include file="header.jsp"%>
 
 
- <div class="container" id="produkt">
-    <div class="row">
-        <div class="col-md-5 py-3 py-md-0" id="side1">
-            <h3 class="text-center">Administrator</h3>
-        </div>
-        <div class="col-md-7 py-3 py-md-0" id="side2">
-            <h3 class="text-center">Produkt</h3>
-            <p class="text-center">Ihre Produkt hinzufügen  </p>
-            <div class="input2 text-center">
-            Name :<input type="text" name="name" value=""><br>
-              ProduktId :<input type="text" name="id" value=""><br>
-              Preis :<input type="text" name="preis" value=""><br>
-              Bestand :<input type="text" name="bestand" value=""><br>
-              Rabatt :<input type="text" name="rabatt" value=""><br>
-              Datum :<input type="text" name="datum" value=""><br>
-             Kategorie :<input type="text" name="kategorie" value=""><br>
-              Marke :<input type="text" name="marke" value=""><br><br>
-              
-              
-              
-              
-               <button id="speichern">Speichern</button>
-              
-            </div>
-              </div>
+	<div class="container" >
+		<div class="row">
+			<div class="col-md-5 py-3 py-md-0" id="side1">
+				<h3 class="text-center">Administrator</h3>
+			</div>
+			<div class="col-md-7 py-3 py-md-0" id="side2">
 
-    </div>
-   </div>
+				<h3 class="text-center h1">Product</h3>
+				<p class="text-center"></p>
+				<div class="">
+
+					<!-- Basic Form -->
+					<form class="mb-3" action="./ProduktAppl.jsp">
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Produkt Name</label> <input
+								type="text" name="produktName" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Produkt Nummer</label> <input
+								type="text" name="produktNummer" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Beschreibung</label>
+							<textarea name="beschreibung" class="form-control" id="comment" rows="5"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Preis</label> <input
+								type="text" name="produktPreis" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Bestand</label> <input
+								type="text" name="Bestand" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Kategorie</label> <input
+								type="text" name="kategorie" class="form-control" />
+						</div>
+						<div class="mb-3">
+							<label for="produkt" class="form-label">Marke</label> <input
+								type="text" name="marke" class="form-control" />
+						</div>
+						
+						
 
 
-<%@ include file="../html/footer.html"%>
-</form>
+						<div class="mb-5">
+							<input type="submit" value="SAVE" name="btnSaveProdukt"
+								class="btn btn-lg btn-primary " />
+						</div>
+
+					</form>
+				</div>
+
+			</div>
+
+
+		</div>
+
+
+
+
+	</div>
+
+
+
+
+
+
+ 
+
+
+
+
 </body>
 </html>

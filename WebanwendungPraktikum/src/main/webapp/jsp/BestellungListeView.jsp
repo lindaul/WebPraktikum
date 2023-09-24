@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>All Orders</title>
 <link rel="stylesheet" href="../css/Bestellung.css">
 </head>
 <body>
@@ -54,6 +54,7 @@ Meine Bestellungen
                         <th scope="col">Preis</th>
                         <th scope="col">Menge</th>
                         <th scope="col">Gesamt Preis</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>

@@ -1,39 +1,32 @@
-<%@page import="de.hwg_lu.bwi.beans.Warenkorb_Produkt"%>
-<%@page import="de.hwg_lu.bwi.beans.WarenkorbBean"%>
-<%@page import="de.hwg_lu.bwi.beans.Produkt"%>
-<%@page import="de.hwg_lu.bwi.beans.LoginBean"%>
-
+<%@page import="de.hwg_lu.bwi.beans.KommentarBean"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> All of the Reviews</title>
 <link rel="stylesheet" href="../css/Bestellung.css">
 </head>
 <body>
-	
+
+
+
 	<jsp:useBean id="myProdukt" class="de.hwg_lu.bwi.beans.Produkt"
 		scope="session" />
-	<jsp:useBean id="myWarenkorb" class="de.hwg_lu.bwi.beans.WarenkorbBean"
+	<jsp:useBean id="myKommentar" class="de.hwg_lu.bwi.beans.KommentarBean"
 		scope="session" />
-	<jsp:useBean id="myWarenkorbProdukt"
-		class="de.hwg_lu.bwi.beans.Warenkorb_Produkt" scope="session" />
+	
 
 
      <!-- top navbar -->
     <%@ include file="header.jsp"%>
+    
    
      <!-- navbar -->
-   
-
- <h1>   
-
-Meine Bestellungen
+     
+     
+ <h1>   Reviews of all Produkt</h1>
 <br><br>
 
-</h1>
-
-<div id="messagebean">  </div>
 
 <section class="intro">
   <div class="bg-image h-100" style="background-color: #f5f7fa;">
@@ -48,19 +41,17 @@ Meine Bestellungen
                     <thead style="background-color: rgb(67 0 86);">
                       <tr>
                         
-                        <th scope="col">Photo</th>
-                        <th scope="col">Produkt Name</th>
-                        <th scope="col">Kategorie</th>
-                        <th scope="col">Preis</th>
-                        <th scope="col">Menge</th>
-                        <th scope="col">Gesamt Preis</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Note</th>
+                        <th scope="col">Date</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
+                      <jsp:getProperty property="allKommentar" name="myKommentar"/>
+                 
                       
-                      
-                      <jsp:getProperty property="bestellungListe" name="myWarenkorbProdukt"/>
                       
                     </tbody>
                   </table>
@@ -75,6 +66,7 @@ Meine Bestellungen
 </section>
 
 <%@ include file="../html/footer.html"%>
+
 
 
 </body>

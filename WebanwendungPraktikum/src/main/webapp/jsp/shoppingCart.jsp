@@ -18,11 +18,13 @@
    
     <!-- navbar -->
  <h1>   
-
-Ansicht f&uuml;r die Warenkorb
-
-
+Your Shopping Cart
 </h1>
+
+<div id="messageBean">
+
+
+</div>
 
 <section class="h-100 h-custom" style="background-color: #d2c9ff;">
   <div class="container py-5 h-100">
