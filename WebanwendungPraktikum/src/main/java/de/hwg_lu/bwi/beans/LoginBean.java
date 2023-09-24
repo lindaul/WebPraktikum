@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpSession;
 
+import de.hwg_lu.bwi.jdbc.NoConnectionException;
 import de.hwg_lu.bwi.jdbc.PostgreSQLAccess;
 
 public class LoginBean {
@@ -14,14 +15,25 @@ public class LoginBean {
 	String email;
 	String password;
 	boolean loggedIn;
+	String isAdmin;
 	
-	
+	Produkt produkt;
+	Connection 	dbConn;
 
-	public LoginBean() {
+
+
+	public void setIsAdmin(String isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+	public LoginBean() throws SQLException {
 		super();
 		this.setLoggedIn(false);
 		this.email = "";
 		this.password = "";
+		this.isAdmin ="";
+		this.dbConn = new PostgreSQLAccess().getConnection();
+		this.produkt = new Produkt();
 	}
 	
 	public void initialize() {
@@ -80,7 +92,7 @@ public class LoginBean {
 		//false: userid/pw Kombination existiert nicht in der Datenbank
 		String vorname ="";
 		String nachname="";
-		String sql = "select vorname, nachname from bwi520_633040_634997.user where email = ? and passworduser = ?";
+		String sql = "select vorname, nachname, isAdmin from bwi520_633040_634997.user where email = ? and passworduser = ?";
 		System.out.println(sql);
 		Connection dbConn = new PostgreSQLAccess().getConnection();
 		PreparedStatement prep = dbConn.prepareStatement(sql);
@@ -90,6 +102,7 @@ public class LoginBean {
 		while(dbRes.next()) {
 			vorname = dbRes.getString("vorname");
 			nachname = dbRes.getString("nachname");
+			this.setIsAdmin(dbRes.getString("isAdmin"));
 			/*
 			 * user = new UserBean( dbRes.getInt("userid"), dbRes.getString("vorname"),
 			 * dbRes.getString("nachname"), dbRes.getString("email"),
@@ -97,7 +110,7 @@ public class LoginBean {
 			 */
 			
 		}
-		return vorname + " " +nachname;
+		return vorname + " " +nachname  + this.getIsAdmin();
 	}
 	
 	
@@ -123,6 +136,100 @@ public class LoginBean {
 			
 		}
 		
+		return html;
+		
+		
+	}
+	
+	
+	public String getNavbar() throws NoConnectionException, SQLException {
+		
+		String html ="";
+		
+		if(!this.isLoggedIn()) {
+			
+			html+="<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n"
+					+ "    <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\n"
+					+ "      <li class=\"nav-item\">\n"
+					+ "        <a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Home</a>\n"
+					+ "      </li>\n"
+					+ "      <li class=\"nav-item dropdown\">\n"
+					+ "        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n"
+					+ "          Category\n"
+					+ "        </a>\n"
+					+ "        <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\" style=\"background-color: rgb(67 0 86);\">\n";
+	                 
+			 html+=produkt.getCategory();
+					html+="</ul>\n"
+					+ "      </li>\n"
+					+ "    \n"
+					+ "    </ul>\n"
+					+ "  </div>\n";
+				
+			
+			
+			
+		}else if(this.isLoggedIn() && this.getIsAdmin().equals("Y")) {
+			html+="<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n"
+					+ "    <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\n"
+					+ "      <li class=\"nav-item\">\n"
+					+ "        <a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Home</a>\n"
+					+ "      </li>\n"
+					+ "      <li class=\"nav-item dropdown\">\n"
+					+ "        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdownProduct\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\n"
+					+ "          Product\n"
+					+ "        </a>\n"
+					+ "        <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownProduct\" style=\"background-color: rgb(67 0 86);\">\n"
+					+ "          <li><a class=\"dropdown-item\" href=\"Produkt.jsp\">Add Product</a></li>\n"
+					+ "          <li><a class=\"dropdown-item\" href=\"#\">View Product List</a></li>\n"
+					+ "        </ul>\n"
+					+ "      </li>\n"
+					+ "      \n"
+					+ "      <li class=\"nav-item\">\n"
+					+ "        <a class=\"nav-link\" href=\"Bestellung.jsp\"> All Orders </a>\n"
+					+ "      </li>\n"
+					+ "      <li class=\"nav-item\">\n"
+					+ "        <a class=\"nav-link\" href=\"KommentarListeView.jsp\">All Products Review</a>\n"
+					+ "      </li>\n"
+					+ "    </ul>\n"
+					+ "  </div>";
+		
+		}else
+		{
+			
+			
+			html="<div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n"
+					+ "  <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\n"
+					+ "    <li class=\"nav-item\">\n"
+					+ "      <a class=\"nav-link active\" aria-current=\"page\" href=\"index.jsp\">Home</a>\n"
+					+ "    </li>\n"
+					+ "\n"
+					+ "    <li class=\"nav-item dropdown\">\n"
+					+ "      <a\n"
+					+ "        class=\"nav-link dropdown-toggle\"\n"
+					+ "        href=\"#\"\n"
+					+ "        id=\"navbarDropdown\"\n"
+					+ "        role=\"button\"\n"
+					+ "        data-bs-toggle=\"dropdown\"\n"
+					+ "        aria-expanded=\"false\"\n"
+					+ "      >\n"
+					+ "        Category\n"
+					+ "      </a>\n"
+					+ "      <ul\n"
+					+ "        class=\"dropdown-menu\"\n"
+					+ "        aria-labelledby=\"navbarDropdown\"\n"
+					+ "        style=\"background-color: rgb(67 0 86)\"\n"
+					+ "      >\n";
+			                         html+=produkt.getCategory();
+					html+= "      </ul>\n"
+					+ "    </li>\n"
+					+ "    <li class=\"nav-item\">\n"
+					+ "      <a class=\"nav-link\" href=\"BestellungAppl.jsp\">Meine Bestellungen</a>\n"
+					+ "    </li>\n"
+					+ "  </ul>\n"
+					+ "</div>\n"
+					+ "";
+		}
 		return html;
 		
 		
@@ -180,6 +287,10 @@ public class LoginBean {
 
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
+	}
+	
+	public String getIsAdmin() {
+		return isAdmin;
 	}
 
 

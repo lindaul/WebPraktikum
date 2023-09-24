@@ -48,7 +48,7 @@ Meine Bestellungen
               <div class="card-body p-0">
                 <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
                   <table class="table table-striped mb-0">
-                    <thead style="background-color: #002d72;">
+                    <thead style="background-color: rgb(67 0 86);">
                       <tr>
                         
                         <th scope="col">Photo</th>

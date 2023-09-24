@@ -23,6 +23,28 @@
 
 
 
+String  categorie = request.getParameter("category");
+
+
+if(categorie != null){
+	
+	myProduct.getProduitCategorie(categorie);
+	response.sendRedirect("index.jsp");
+	
+	
+	
+	
+	
+}else{	
+	response.sendRedirect("index.jsp");
+}
+
+
+
+
+
+
+
 
 %>
 

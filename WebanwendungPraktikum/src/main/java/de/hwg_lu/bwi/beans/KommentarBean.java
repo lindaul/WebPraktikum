@@ -6,32 +6,45 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import de.hwg_lu.bwi.jdbc.NoConnectionException;
 import de.hwg_lu.bwi.jdbc.PostgreSQLAccess;
 
-public class Kommentar {
+public class KommentarBean {
 
-	private String kommentarId;
+	private int kommentarId;
 	private String beschreibungKommentar;
 	private String erstellungsdatum;
 	private int bewertung;
-	private Produkt produckt;
-	private UserBean user;
+	private int produktId;
+	private int userId;
 
-	ArrayList<Kommentar> kommentarList;
+	ArrayList<KommentarBean> kommentarList;
 
 	Connection dbConn;
+	
+	
+
+	public KommentarBean(int kommentarId, String beschreibungKommentar, String erstellungsdatum, int bewertung,
+			int produktId, int userId) {
+		super();
+		this.kommentarId = kommentarId;
+		this.beschreibungKommentar = beschreibungKommentar;
+		this.erstellungsdatum = erstellungsdatum;
+		this.bewertung = bewertung;
+		this.produktId = produktId;
+		this.userId = userId;
+	}
 
 	public void insertKommentarDB() throws SQLException {
 
-		String sql = "insert into kommentar (beschreibungKommentar," + "erstellungsdatum," + "bewertung,"
-				+ "producktId," + "userId," + ") values (?,?,?,?,?,?)";
+		String sql = "insert into bwi520_633040_634997.kommentar (beschreibungKommentar," + "erstellungsdatum," + "bewertung,"
+				+ "produktId," + "userId) values (?,current_date,?,?,?)";
 		System.out.println(sql);
 		PreparedStatement prep = this.dbConn.prepareStatement(sql);
 		prep.setString(1, this.beschreibungKommentar);
-		prep.setString(2, this.erstellungsdatum);
-		prep.setInt(3, this.bewertung);
-		prep.setInt(4, this.produckt.getProduktId());
-		prep.setInt(5, this.user.getUserid());
+		prep.setInt(2, this.bewertung);
+		prep.setInt(3, this.produktId);
+		prep.setInt(4, this.userId);
 
 		prep.executeUpdate();
 		System.out.println("Kommentar  erfolgreich angelegt");
@@ -41,7 +54,7 @@ public class Kommentar {
 	public void updateProduktDB(int kommentarId, String beschreibungKommentar, String erstellungsdatum, int bewertung,
 			Produkt produkt, UserBean user) throws SQLException {
 
-		String sql = "update produkt set beschreibungKommentar =?," + "erstellungsdatum =?," + "bewertung =?,"
+		String sql = "update bwi520_633040_634997.kommentar set beschreibungKommentar =?," + "erstellungsdatum =?," + "bewertung =?,"
 				+ "producktId =?," + "userId=?," + ") where kommentarId = ?";
 		System.out.println(sql);
 		PreparedStatement prep = this.dbConn.prepareStatement(sql);
@@ -58,7 +71,7 @@ public class Kommentar {
 
 	public void deleteKommentarDB(int kommentarId) throws SQLException {
 
-		String sql = "DELETE from produkt where id = ?";
+		String sql = "DELETE from bwi520_633040_634997.kommentar where id = ?";
 		System.out.println(sql);
 		PreparedStatement prep = this.dbConn.prepareStatement(sql);
 		prep.setInt(1, kommentarId);
@@ -71,7 +84,8 @@ public class Kommentar {
 
 	public void getAllKommentarDB() throws SQLException {
 
-		String sql = "select" 
+		String sql = "select"
+				   + "kommentarid" 
 		           + "beschreibungKommentar " 
 				   + "erstellungsdatum," 
 		           + "bewertung"  
@@ -85,11 +99,11 @@ public class Kommentar {
 		while (dbRes.next()) {
 			
 			this.kommentarList.add(
-					new Kommentar(   
+					new KommentarBean(   
+							dbRes.getInt("kommentarid"),
 						   dbRes.getString("beschreibungKommentar"),
 					       dbRes.getString("erstellungsdatum"),
-					       dbRes.getString("bewertung"),
-					       dbRes.getDouble("rabatt"),
+					       dbRes.getInt("bewertung"),
 					       dbRes.getInt("produktId"),
 					       dbRes.getInt("userId")
 
@@ -98,13 +112,15 @@ public class Kommentar {
 
 	}
 
-	public String getKommentarId() {
+	public void setKommentarId(int kommentarId) {
+		this.kommentarId = kommentarId;
+	}
+
+	public int getKommentarId() {
 		return kommentarId;
 	}
 
-	public void setKommentarId(String kommentarId) {
-		this.kommentarId = kommentarId;
-	}
+
 
 	public String getBeschreibungKommentar() {
 		return beschreibungKommentar;
@@ -130,28 +146,27 @@ public class Kommentar {
 		this.bewertung = bewertung;
 	}
 
-	public Produkt getProduckt() {
-		return this.produckt;
+	public int getProduktId() {
+		return this.produktId;
 	}
 
-	public void setProducktId(Produkt producktId) {
-		this.produckt = produckt;
+	public void setProducktId(int producktId) {
+		this.produktId = producktId;
 	}
 
-	public UserBean getUserId() {
-		return this.user;
+	public int getUserId() {
+		return this.userId;
 	}
 
-	public void setUserId(UserBean userId) {
-		this.user = userId;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public Kommentar() {
+	public KommentarBean() throws NoConnectionException {
 		// TODO Auto-generated constructor stub
+		
+		this.dbConn = new PostgreSQLAccess().getConnection();
 	}
 
-	public Kommentar(String string, String string2, String string3, double double1, int int1, int int2) {
-		// TODO Auto-generated constructor stub
-	}
 
 }

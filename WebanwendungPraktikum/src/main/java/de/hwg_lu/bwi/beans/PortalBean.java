@@ -11,6 +11,7 @@ public class PortalBean {
 	public void getLoggedHeaderImage() {
 		String html ="";
 		
+		
 		if(!this.login.isLoggedIn()) {
 			html += "<a href='loginView.jsp'><img src='../img/register.png' alt='' width='18px'>Login</a>\n"
 					+ "            <a href='registerView.jsp'><img src='../img/register.png' alt='' width='18px'>Register</a>";

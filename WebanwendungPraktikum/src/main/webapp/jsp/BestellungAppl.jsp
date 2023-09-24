@@ -40,6 +40,11 @@ if(btnBestellen.equals("bestellen") && btnBestellen!= null ){
 	
 	response.sendRedirect("./Bestellung.jsp");
 	
+}else{
+	int idUser = myLogin.useridEingeloggt();
+	myWarenkorbProdukt.setUserid(idUser);
+
+	response.sendRedirect("./Bestellung.jsp");
 }
 
 

@@ -37,6 +37,8 @@
 	
 	
 	String stringProduktid = request.getParameter("btnProduktid");
+	if (stringProduktid == null)
+		stringProduktid = "";
 	
 	
 	
@@ -75,8 +77,7 @@
 			
 			/*creer une instance pour warenkorb*/
 
-			if (stringProduktid == null)
-				stringProduktid = "";
+			
 			
 			
 

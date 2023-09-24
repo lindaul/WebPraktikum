@@ -39,10 +39,18 @@
           <label for="password" class="form-label">Password</label>
           <input type="password" name="password" class="form-control" />
         </div>
-        <div class="mb-3">
+        <div class="mb-3"></div>
+         <div class="mb-3"></div>
+          <div class="mb-3"></div>
+          <div class="mb-3">
+              <a  href=".\registerView.jsp" > You dont have an account Sign Up here</a>
+        </div>
+        
+        
+        <div class="mb-5">
        <input type="submit" value="Login" name="btnLogin" class="btn btn-lg btn-primary " />
         </div>
-       
+      
       </form>
         </div>
 

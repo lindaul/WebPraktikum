@@ -225,7 +225,7 @@ public class Warenkorb_Produkt {
 
 			if (generatedKeys.next()) {
 				warenkorbId = generatedKeys.getInt(1);
-				this.warenkorbId = dbRes.getInt("warenkorbId");
+				this.warenkorbId = generatedKeys.getInt(1);
 				
 			} else {
 				throw new SQLException("No Id generated for the warenkorb");
@@ -532,7 +532,7 @@ public String getBestellungListe() throws SQLException {
 				+ "                        <td>"+produkt.getPreisProdukt()+"</td>\n"
 				+ "                        <td>"+produkt.getMenge()+"</td>\n"
 				+ "                        <td>"+produkt.getGesamtPreis()+"</td>\n"
-				+ "                        <td><a href=\"\" class=\"btn btn-sm btn-danger\">Kommentar Schreiben</a> </td>\n"
+				+ "                        <td><a href='KommentarView.jsp?idProdukt="+produkt.getProduktid()+"' class=\"btn btn-sm btn-danger\">Kommentar Schreiben</a> </td>\n"
 				+ "                      </tr>";
 	}
 
@@ -601,7 +601,15 @@ public String getBestellungenWarenkorb() {
 				+ "                        <td>"+produkt.getPreisProdukt()+"</td>\n"
 				+ "                        <td>"+produkt.getMenge()+"</td>\n"
 				+ "                        <td>"+produkt.getGesamtPreis()+"</td>\n"
-				+ "                        <td><a href=\"\" class=\"btn btn-sm btn-danger\">Kommentar Schreiben</a> </td>\n"
+				+ "                        <td>"
+				+ "<form action='KommentarView.jsp'>"
+				+ ""
+				+ ""
+				+ "<button type='submit' class='btn btn-danger' name='idProdukt'>Send Comment</button>"
+				+ "</form> "
+				+ "</td>"
+				+ ""
+				+ "\n"
 				+ "                      </tr>";
 		
 		
