@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="de.hwg_lu.bwi.beans.Produkt"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,6 +10,7 @@
     
 </head>
 <body>
+<jsp:useBean id="myProduct" class="de.hwg_lu.bwi.beans.Produkt" scope="session"/>
 
     <%@ include file="header.jsp"%>
 
@@ -45,151 +47,15 @@
     <!-- product cards -->
     <div class="container" id="product-cards">
       <h1 class="text-center">PRODUCTS</h1>
+      <div class="row" style="margin-top: 30px;">
+       
+          
+          <jsp:getProperty property="productCard" name="myProduct"/>
       
-      <div class="row" style="margin-top: 30px;">
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/p6.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Iphone 13 pro</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$1000 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
         </div>
-        
-        
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/a1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Airpods</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$100 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/laptop2.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Laptop</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$200 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/t1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Ipad</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$300 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top: 30px;">
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/w1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Smart Watch</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$50.60 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pcm1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">PC Moniter</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$600 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/phone1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">iPhone x</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$500 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/h1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Headphone</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$60 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+         </div>
+         
+     
     <!-- product cards -->
 
 
@@ -265,75 +131,10 @@
     <div class="container" id="product-cards">
 
       <div class="row" style="margin-top: 30px;">
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr1.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Washion Machine</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$100.50 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr2.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">AC</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$500 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr3.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Microwave Oven</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$200.30 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr4.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Fridge</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$300 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
+       
+   
+     
+      
 
       <!-- other cards -->
     <div class="container" id="other">
@@ -372,150 +173,6 @@
 
 
 
-      <div class="row" style="margin-top: 30px;">
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr5.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Fan</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$50.60 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr6.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Fridge</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$1500 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr7.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Gaming PC</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>500.60 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr8.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Moniter</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$250 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="row" style="margin-top: 30px;">
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr9.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Smart Watch</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$30.20 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr10.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Power Bank</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$100.50 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr11.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Gaming Mouse</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$30 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 py-3 py-md-0">
-          <div class="card">
-            <img src="../img/pr12.png" alt="">
-            <div class="card-body">
-              <h3 class="text-center">Joysticks</h3>
-              <p class="text-center">Lorem ipsum dolor sit amet.</p>
-              <div class="star text-center">
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-                <i class="fa-solid fa-star checked"></i>
-              </div>
-              <h2>$150 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- product cards -->
 
 

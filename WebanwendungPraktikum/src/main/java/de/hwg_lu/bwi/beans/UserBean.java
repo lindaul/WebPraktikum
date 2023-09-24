@@ -196,6 +196,7 @@ public class UserBean {
 		prep.setString(1, this.email);
 		prep.setString(2, this.password);
 		ResultSet dbRes = prep.executeQuery();
+		System.out.println("User and password  match");
 		return dbRes.next();
 	}
 

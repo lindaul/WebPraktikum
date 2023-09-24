@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html >
 <html lang="en">
@@ -9,6 +9,7 @@
     <title>Electronic Shop Header</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
     <!-- bootstrap links -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- end bootstrap links -->
@@ -20,17 +21,18 @@
     
 </head>
 <body>
-
+<jsp:useBean id="myUser" class="de.hwg_lu.bwi.beans.UserBean" scope="session"/>
+<jsp:useBean id="myLogin" class="de.hwg_lu.bwi.beans.LoginBean" scope="session"/>
+ 
     <!-- top navbar -->
-    <div class="top-navbar">
-        <p>WELCOME TO QEMSOH ELECTRONICS SHOP</p>
+    <div class="top-navbar ">
+        <jsp:getProperty property="welcomeMessage" name="myLogin"/>
         <div class="icons">
-            <a href="login.jsp"><img src="../img/register.png" alt="" width="18px">Login</a>
-            <a href="register.jsp"><img src="../img/register.png" alt="" width="18px">Register</a>
+           <jsp:getProperty property="loggedHeaderImage" name="myLogin"/>
             <!-- Warenkorbsymbol -->
-           <i id="cart-icon" class="fas fa-shopping-cart"> cart </i>
+           <a href="ShoppingCartAppl.jsp"> <i id="cart-icon" class="fas fa-shopping-cart"> cart </i> </a>
        </div>
-    </div>
+    </div>     
     <!-- top navbar -->
  
   

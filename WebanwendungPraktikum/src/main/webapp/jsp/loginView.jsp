@@ -30,7 +30,7 @@
             <div class="">
            
                    <!-- Basic Form -->
-      <form class="mb-3">
+      <form class="mb-3" action="./LoginAppl.jsp">
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
           <input type="email" name="email" class="form-control" />
